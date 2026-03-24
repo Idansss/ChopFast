@@ -12,7 +12,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const router = useRouter();
-  const login = useUserStore((s) => s.login);
+  const register = useUserStore((s) => s.register);
 
   function set(field: string, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -36,7 +36,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     setTimeout(() => {
-      login({
+      register({
         id: "usr_" + Date.now(),
         firstName: form.firstName.trim(),
         lastName: form.lastName.trim(),

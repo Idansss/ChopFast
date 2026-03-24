@@ -13,7 +13,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const login = useUserStore((s) => s.login);
+  const loginByEmail = useUserStore((s) => s.loginByEmail);
+  const register = useUserStore((s) => s.register);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,17 +24,20 @@ export default function LoginPage() {
     if (password.length < 6) { setError("Password must be at least 6 characters."); return; }
 
     setLoading(true);
-    // Simulate auth — replace with real API call
     setTimeout(() => {
-      const nameParts = email.split("@")[0].split(".");
-      login({
-        id: "usr_" + Date.now(),
-        firstName: nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1),
-        lastName: nameParts[1] ? nameParts[1].charAt(0).toUpperCase() + nameParts[1].slice(1) : "",
-        email,
-        phone: "",
-        avatar: "",
-      });
+      // Restore saved profile if account exists, otherwise create one
+      const found = loginByEmail(email.trim().toLowerCase());
+      if (!found) {
+        const nameParts = email.split("@")[0].split(".");
+        register({
+          id: "usr_" + Date.now(),
+          firstName: nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1),
+          lastName: nameParts[1] ? nameParts[1].charAt(0).toUpperCase() + nameParts[1].slice(1) : "",
+          email: email.trim().toLowerCase(),
+          phone: "",
+          avatar: "",
+        });
+      }
       router.push("/home");
     }, 1200);
   }
