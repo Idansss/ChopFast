@@ -432,7 +432,7 @@ export default function ProfilePage() {
                     onClick={toggleTheme}
                     className={`w-12 h-7 rounded-full transition-colors relative flex-shrink-0 ${isDark ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
                   >
-                    <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${isDark ? "translate-x-6" : "translate-x-1"}`} />
+                    <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-all ${isDark ? "left-6" : "left-1"}`} />
                   </button>
                 </div>
               </div>
@@ -457,7 +457,7 @@ export default function ProfilePage() {
                         onClick={() => setNotifications((n) => ({ ...n, [key]: !n[key] }))}
                         className={`w-12 h-7 rounded-full transition-colors relative flex-shrink-0 ${notifications[key] ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
                       >
-                        <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${notifications[key] ? "translate-x-6" : "translate-x-1"}`} />
+                        <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-all ${notifications[key] ? "left-6" : "left-1"}`} />
                       </button>
                     </div>
                   ))}
