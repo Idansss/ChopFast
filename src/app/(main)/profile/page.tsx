@@ -14,6 +14,7 @@ import { useThemeStore } from "@/store/themeStore";
 import { useOrderStore } from "@/store/orderStore";
 import { useFavStore } from "@/store/favStore";
 import type { OrderStatus } from "@/types";
+import { useToast } from "@/components/shared/Toast";
 
 const TOP_UP_AMOUNTS = [1000, 2000, 5000, 10000, 20000, 50000];
 
@@ -66,6 +67,7 @@ export default function ProfilePage() {
   const [topUpScreen, setTopUpScreen] = useState<"select" | "ussd" | "bank" | "processing">("select");
   const [notifications, setNotifications] = useState({ orders: true, promos: true, reminders: false });
   const [editName, setEditName] = useState({ firstName: user?.firstName ?? "", lastName: user?.lastName ?? "" });
+  const { showToast } = useToast();
 
   const initials = user
     ? (user.firstName[0] + (user.lastName?.[0] ?? "")).toUpperCase()
@@ -78,10 +80,25 @@ export default function ProfilePage() {
   function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      showToast("Please choose an image file.", "error");
+      e.target.value = "";
+      return;
+    }
+
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      showToast("Image is too large. Max size is 5MB.", "error");
+      e.target.value = "";
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === "string") {
         updateAvatar(reader.result);
+        showToast("Profile picture updated.");
       }
     };
     reader.readAsDataURL(file);
@@ -195,6 +212,16 @@ export default function ProfilePage() {
             <h1 className="text-xl font-black">{user ? `${user.firstName} ${user.lastName}`.trim() : "Guest"}</h1>
             <p className="text-gray-300 text-sm">{user?.email || "—"}</p>
             <p className="text-gray-400 text-xs mt-0.5">{phoneDisplay}</p>
+            <div className="mt-2">
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors"
+              >
+                <Camera className="w-3.5 h-3.5" />
+                {user?.avatar ? "Change photo" : "Add photo"}
+              </button>
+            </div>
           </div>
           <button
             type="button"
@@ -403,9 +430,9 @@ export default function ProfilePage() {
                     type="button"
                     aria-label={isDark ? "Disable dark mode" : "Enable dark mode"}
                     onClick={toggleTheme}
-                    className={`w-11 h-6 rounded-full transition-colors relative flex-shrink-0 ${isDark ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
+                    className={`w-12 h-7 rounded-full transition-colors relative flex-shrink-0 ${isDark ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
                   >
-                    <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${isDark ? "translate-x-5" : "translate-x-0.5"}`} />
+                    <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${isDark ? "translate-x-6" : "translate-x-1"}`} />
                   </button>
                 </div>
               </div>
@@ -428,9 +455,9 @@ export default function ProfilePage() {
                         type="button"
                         aria-label={`${notifications[key] ? "Disable" : "Enable"} ${label}`}
                         onClick={() => setNotifications((n) => ({ ...n, [key]: !n[key] }))}
-                        className={`w-11 h-6 rounded-full transition-colors relative flex-shrink-0 ${notifications[key] ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
+                        className={`w-12 h-7 rounded-full transition-colors relative flex-shrink-0 ${notifications[key] ? "bg-[#FF5A1F]" : "bg-gray-200"}`}
                       >
-                        <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${notifications[key] ? "translate-x-5" : "translate-x-0.5"}`} />
+                        <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${notifications[key] ? "translate-x-6" : "translate-x-1"}`} />
                       </button>
                     </div>
                   ))}
