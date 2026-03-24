@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import BrandLogo from "@/components/shared/BrandLogo";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -17,9 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-[#FF5A1F] flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CF</span>
-              </div>
+              <BrandLogo size={32} />
               <span className="text-white font-bold text-xl">
                 Chop<span className="text-[#FF5A1F]">fast</span>
               </span>

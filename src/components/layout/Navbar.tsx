@@ -11,6 +11,7 @@ import { useThemeStore } from "@/store/themeStore";
 import LocationPicker from "./LocationPicker";
 import SearchModal from "./SearchModal";
 import NotificationDropdown from "./NotificationDropdown";
+import BrandLogo from "@/components/shared/BrandLogo";
 
 const NAV_LINKS = [
   { href: "/home",        label: "Home" },
@@ -46,9 +47,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
             <Link href="/home" className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-8 h-8 rounded-xl bg-[#FF5A1F] flex items-center justify-center shadow-sm shadow-[#FF5A1F]/30">
-                <span className="text-white font-black text-xs">CF</span>
-              </div>
+              <BrandLogo size={32} priority className="shrink-0" />
               <span className={`font-black text-xl tracking-tight ${isDark ? "text-white" : "text-[#1A1A2E]"}`}>
                 Chop<span className="text-[#FF5A1F]">fast</span>
               </span>

@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinGradient" x1="120" y1="60" x2="404" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB800"/>
+      <stop offset="1" stop-color="#FF5A1F"/>
+    </linearGradient>
+    <filter id="softShadow" x="84" y="50" width="344" height="404" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="10"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.352941 0 0 0 0 0.121569 0 0 0 0.25 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M256 76C176.471 76 112 140.471 112 220C112 326.71 232.096 412.172 248.238 423.122C252.959 426.327 259.041 426.327 263.762 423.122C279.904 412.172 400 326.71 400 220C400 140.471 335.529 76 256 76Z" fill="url(#pinGradient)"/>
+    <circle cx="256" cy="220" r="95" fill="#FFF7EF"/>
+  </g>
+
+  <g transform="translate(170 155)">
+    <rect x="18" y="0" width="18" height="165" rx="9" transform="rotate(38 18 0)" fill="#171717"/>
+    <path d="M5 44C2.239 44 0 41.761 0 39V5C0 2.239 2.239 0 5 0C7.761 0 10 2.239 10 5V39C10 41.761 7.761 44 5 44Z" fill="#171717"/>
+    <path d="M19 44C16.239 44 14 41.761 14 39V5C14 2.239 16.239 0 19 0C21.761 0 24 2.239 24 5V39C24 41.761 21.761 44 19 44Z" fill="#171717"/>
+    <path d="M33 44C30.239 44 28 41.761 28 39V5C28 2.239 30.239 0 33 0C35.761 0 38 2.239 38 5V39C38 41.761 35.761 44 33 44Z" fill="#171717"/>
+  </g>
+
+  <g transform="translate(255 162)">
+    <rect x="0" y="140" width="18" height="155" rx="9" transform="rotate(-40 0 140)" fill="#171717"/>
+    <ellipse cx="88" cy="72" rx="34" ry="53" transform="rotate(35 88 72)" fill="#EFEFEF" stroke="#171717" stroke-width="12"/>
+  </g>
+
+  <circle cx="360" cy="110" r="10" fill="#FFB800"/>
+  <path d="M394 84C399.523 84 404 88.477 404 94C404 99.523 399.523 104 394 104C388.477 104 384 99.523 384 94C384 88.477 388.477 84 394 84Z" fill="#37A8FF"/>
+  <path d="M421 121C424.866 121 428 124.134 428 128C428 131.866 424.866 135 421 135C417.134 135 414 131.866 414 128C414 124.134 417.134 121 421 121Z" fill="#9BF4D1"/>
+</svg>

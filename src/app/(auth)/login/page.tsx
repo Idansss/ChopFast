@@ -45,9 +45,6 @@ export default function LoginPage() {
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#FF5A1F]/20 blur-3xl" />
         <div className="absolute bottom-10 -left-10 w-60 h-60 rounded-full bg-[#FFB800]/15 blur-3xl" />
         <Link href="/home" className="relative flex items-center gap-2">
-          <div className="w-9 h-9 rounded-xl bg-[#FF5A1F] flex items-center justify-center shadow-lg shadow-[#FF5A1F]/30">
-            <span className="text-white font-black text-sm">CF</span>
-          </div>
           <span className="text-white font-black text-xl">Chop<span className="text-[#FF5A1F]">fast</span></span>
         </Link>
         <div className="relative flex-1 flex items-center justify-center">
@@ -71,9 +68,6 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
           <Link href="/home" className="lg:hidden flex items-center gap-2 mb-8 justify-center">
-            <div className="w-9 h-9 rounded-xl bg-[#FF5A1F] flex items-center justify-center">
-              <span className="text-white font-black text-sm">CF</span>
-            </div>
             <span className="text-[#1A1A2E] font-black text-xl">Chop<span className="text-[#FF5A1F]">fast</span></span>
           </Link>
 

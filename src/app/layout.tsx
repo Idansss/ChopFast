@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Chopfast — African Food Delivery",
   description: "Order your favourite African meals online. Fast delivery across Lagos, Accra, Nairobi and more.",
   keywords: "food delivery, jollof rice, Nigerian food, African food, Lagos delivery, Accra delivery",
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
